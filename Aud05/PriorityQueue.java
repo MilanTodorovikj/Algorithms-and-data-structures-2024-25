@@ -1,4 +1,5 @@
 package Aud05;
+
 import java.util.NoSuchElementException;
 
 public class PriorityQueue<E extends Comparable<E>> implements Queue<E> {
@@ -55,21 +56,20 @@ public class PriorityQueue<E extends Comparable<E>> implements Queue<E> {
             latest.succ = front;
             front = latest;
         } else {
-            boolean is_latest_max=true;
-            while(previous.succ !=null){
+            boolean is_latest_max = true;
+            while (previous.succ != null) {
                 if (latest.element.compareTo(previous.succ.element) < 0) {
                     latest.succ = previous.succ;
                     previous.succ = latest;
                     is_latest_max = false;
                     break;
-                }
-                else{
+                } else {
                     previous = previous.succ;
                 }
             }
-            if (is_latest_max){
+            if (is_latest_max) {
                 rear.succ = latest;
-                latest.succ = null;
+                rear = latest;
             }
         }
         length++;
@@ -97,15 +97,16 @@ public class PriorityQueue<E extends Comparable<E>> implements Queue<E> {
         }
         return s.toString();
     }
+
     public static void main(String[] args) {
-        PriorityQueue<Integer> q=new PriorityQueue<>();
+        PriorityQueue<Integer> q = new PriorityQueue<>();
         q.enqueue(6);
-        System.out.println("tekovna sostojba:"+q+" prv za vadenje:"+q.peek());
+        System.out.println("tekovna sostojba:" + q + " prv za vadenje:" + q.peek());
         q.enqueue(9);
-        System.out.println("tekovna sostojba:"+q+" prv za vadenje:"+q.peek());
+        System.out.println("tekovna sostojba:" + q + " prv za vadenje:" + q.peek());
         q.enqueue(4);
-        System.out.println("tekovna sostojba:"+q+" prv za vadenje:"+q.peek());
+        System.out.println("tekovna sostojba:" + q + " prv za vadenje:" + q.peek());
         q.enqueue(7);
-        System.out.println("tekovna sostojba:"+q+" prv za vadenje:"+q.peek());
+        System.out.println("tekovna sostojba:" + q + " prv za vadenje:" + q.peek());
     }
 }
